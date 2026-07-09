@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wedding Connections</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Wedding Connections</p>
+      <h1 id="puzzle-title">Loading puzzle…</h1>
+      <p id="puzzle-subtitle" class="subtitle">Find four groups of four related words.</p>
+    </section>
+
+    <section id="puzzle-list" class="card hidden">
+      <h2>Choose a puzzle</h2>
+      <p>These links can each be turned into a QR code for the reception.</p>
+      <div id="puzzle-links" class="puzzle-links"></div>
+    </section>
+
+    <section id="game" class="game hidden" aria-live="polite">
+      <div id="solved-groups" class="solved-groups"></div>
+      <div id="grid" class="grid" aria-label="Puzzle words"></div>
+
+      <div class="status-row">
+        <div id="mistakes" class="mistakes">Mistakes remaining: ● ● ● ●</div>
+        <div id="message" class="message"></div>
+      </div>
+
+      <div class="controls">
+        <button id="shuffle-btn" type="button">Shuffle</button>
+        <button id="clear-btn" type="button">Clear</button>
+        <button id="submit-btn" type="button" disabled>Submit</button>
+      </div>
+    </section>
+
+    <section id="end-screen" class="card hidden">
+      <h2 id="end-title"></h2>
+      <p id="end-message"></p>
+      <button id="play-again-btn" type="button">Play again</button>
+      <a class="button-link" href="index.html">Pick another puzzle</a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
