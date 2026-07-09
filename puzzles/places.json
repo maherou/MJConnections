@@ -1,0 +1,23 @@
+{
+  "title": "Places and Pastimes",
+  "subtitle": "Another sample puzzle for testing QR-code links.",
+  "maxMistakes": 4,
+  "groups": [
+    {
+      "name": "Board Games",
+      "words": ["Catan", "Risk", "Clue", "Monopoly"]
+    },
+    {
+      "name": "Minnesota Cities",
+      "words": ["Duluth", "Rochester", "Mankato", "Bemidji"]
+    },
+    {
+      "name": "Wedding Things",
+      "words": ["Bouquet", "Vows", "Toast", "Dance"]
+    },
+    {
+      "name": "Things With Keys",
+      "words": ["Piano", "Laptop", "Hotel", "Map"]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Sample Reception Puzzle",
+  "subtitle": "A starter puzzle with made-up categories.",
+  "maxMistakes": 4,
+  "winMessage": "You found all four groups. Now try one about the couple!",
+  "groups": [
+    {
+      "name": "Programming Languages",
+      "words": ["Python", "Rust", "Fortran", "Swift"]
+    },
+    {
+      "name": "National Parks",
+      "words": ["Yellowstone", "Yosemite", "Acadia", "Zion"]
+    },
+    {
+      "name": "Coffee Drinks",
+      "words": ["Latte", "Mocha", "Espresso", "Cappuccino"]
+    },
+    {
+      "name": "Gemstones",
+      "words": ["Ruby", "Jade", "Opal", "Topaz"]
+    }
+  ]
+}
