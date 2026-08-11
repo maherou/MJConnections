@@ -29,8 +29,11 @@ const el = {
   end: document.getElementById("end-screen"),
   endTitle: document.getElementById("end-title"),
   endMessage: document.getElementById("end-message"),
+  endGroups: document.getElementById("end-groups"),
   playAgain: document.getElementById("play-again-btn")
 };
+
+const REVEAL_DELAY_MS = 900;
 
 function shuffleArray(array) {
   const copy = [...array];
@@ -96,17 +99,21 @@ function render() {
   renderStatus();
 }
 
+function buildGroupCard(group, idx) {
+  const card = document.createElement("div");
+  card.className = `solved-card level-${idx}`;
+  card.textContent = group.name;
+  const small = document.createElement("small");
+  small.textContent = group.words.join(", ");
+  card.appendChild(small);
+  return card;
+}
+
 function renderSolvedGroups() {
   el.solved.innerHTML = "";
   puzzle.groups.forEach((group, idx) => {
     if (!solvedGroupNames.has(group.name)) return;
-    const card = document.createElement("div");
-    card.className = `solved-card level-${idx}`;
-    card.textContent = group.name;
-    const small = document.createElement("small");
-    small.textContent = group.words.join(", ");
-    card.appendChild(small);
-    el.solved.appendChild(card);
+    el.solved.appendChild(buildGroupCard(group, idx));
   });
 }
 
@@ -161,28 +168,46 @@ function submitSelection() {
     selected.clear();
     el.message.textContent = "";
     render();
-    if (solvedGroupNames.size === 4) endGame(true);
+    if (solvedGroupNames.size === 4) {
+      // Give the player a moment to see the last category revealed
+      // on the board before moving on to the end screen.
+      setTimeout(() => endGame(true), REVEAL_DELAY_MS);
+    }
   } else {
     mistakesRemaining -= 1;
-    el.message.textContent = mistakesRemaining > 0 ? "Not quite. Try another group." : "No mistakes left.";
+    const oneAway = isOneAway(selected);
+    el.message.textContent = mistakesRemaining > 0
+      ? (oneAway ? "One away…" : "Not quite. Try another group.")
+      : "No mistakes left.";
     selected.clear();
     render();
     if (mistakesRemaining <= 0) endGame(false);
   }
 }
 
+function isOneAway(selectedWords) {
+  const chosen = new Set([...selectedWords].map(normalize));
+  return puzzle.groups.some(group => {
+    if (solvedGroupNames.has(group.name)) return false;
+    const overlap = group.words.filter(word => chosen.has(normalize(word))).length;
+    return overlap === 3;
+  });
+}
+
 function endGame(won) {
+  if (!won) {
+    puzzle.groups.forEach(group => solvedGroupNames.add(group.name));
+  }
   el.game.classList.add("hidden");
   el.end.classList.remove("hidden");
   el.endTitle.textContent = won ? "You solved it!" : "Puzzle complete";
   el.endMessage.textContent = won
     ? (puzzle.winMessage || "Nicely done. Thanks for playing!")
     : "Here are the answers. Refresh or play again to try from the start.";
-  if (!won) {
-    puzzle.groups.forEach(group => solvedGroupNames.add(group.name));
-    renderSolvedGroups();
-    el.end.prepend(el.solved);
-  }
+  el.endGroups.innerHTML = "";
+  puzzle.groups.forEach((group, idx) => {
+    el.endGroups.appendChild(buildGroupCard(group, idx));
+  });
 }
 
 el.shuffle.addEventListener("click", () => {
