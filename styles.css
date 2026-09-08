@@ -12,6 +12,7 @@
   --danger: #9c2f2f;
   --shadow: 0 12px 36px rgba(0,0,0,.08);
   --bg-image-opacity: .16;
+  --bg-image-opacity-picker: .4;
 }
 
 * { box-sizing: border-box; }
@@ -33,6 +34,7 @@ body {
   opacity: var(--bg-image-opacity);
   pointer-events: none;
 }
+.page-bg.picker { opacity: var(--bg-image-opacity-picker); }
 
 .app {
   width: min(940px, 94vw);
@@ -60,7 +62,6 @@ h1 { margin: 6px 0 8px; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
 .puzzle-links a {
   display: block;
   padding: 16px 18px;
-  background: #f4eef3;
   border-radius: 14px;
   color: var(--ink);
   text-decoration: none;

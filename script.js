@@ -61,12 +61,16 @@ function showPuzzleList() {
   el.title.textContent = "Wedding Connections";
   el.subtitle.textContent = "Madeline (M) and Jared (J) love the game Connections and want to share their own version of the game. Enjoy!";
   el.list.classList.remove("hidden");
+  el.pageBg.classList.add("picker");
   el.pageBg.style.backgroundImage = `url("${PICKER_BACKGROUND_IMAGE}")`;
   el.links.innerHTML = "";
-  PUZZLES.forEach(p => {
+  PUZZLES.forEach((p, idx) => {
     const a = document.createElement("a");
     a.href = `index.html?puzzle=${encodeURIComponent(p.id)}`;
     a.textContent = p.title;
+    // Cycle through the same easy-to-hard colors used for solved groups,
+    // repeating them if there are more than four puzzles.
+    a.classList.add(`level-${idx % 4}`);
     el.links.appendChild(a);
   });
 }
@@ -104,6 +108,7 @@ function resetGame() {
   words = shuffleArray(puzzle.groups.flatMap(group => group.words));
   el.title.textContent = puzzle.title || "Wedding Connections";
   el.subtitle.textContent = puzzle.subtitle || "Find four groups of four related words.";
+  el.pageBg.classList.remove("picker");
   el.pageBg.style.backgroundImage = puzzle.backgroundImage ? `url("${puzzle.backgroundImage}")` : "none";
   el.game.classList.remove("hidden");
   el.end.classList.add("hidden");
