@@ -1,6 +1,7 @@
 const PUZZLES = [
-  { id: "sample", title: "Sample Reception Puzzle" },
-  { id: "places", title: "Places and Pastimes" }
+  { id: "jm-places", title: "Places" },
+  { id: "jm-family-names", title: "Family Names" },
+  { id: "jm-trivia", title: "JM Trivia" }
 ];
 
 const MAX_MISTAKES = 4;
@@ -30,8 +31,13 @@ const el = {
   endTitle: document.getElementById("end-title"),
   endMessage: document.getElementById("end-message"),
   endGroups: document.getElementById("end-groups"),
-  playAgain: document.getElementById("play-again-btn")
+  playAgain: document.getElementById("play-again-btn"),
+  modal: document.getElementById("details-modal"),
+  detailsText: document.getElementById("details-text"),
+  detailsClose: document.getElementById("details-close-btn")
 };
+
+let detailsCloseCallback = null;
 
 const REVEAL_DELAY_MS = 900;
 
@@ -76,6 +82,9 @@ function validatePuzzle(data) {
     if (!group.name || !group.words || group.words.length !== 4) {
       throw new Error("Each group needs a name and exactly four words.");
     }
+    if (group.details !== undefined && typeof group.details !== "string") {
+      throw new Error("A group's details, if present, must be a text string.");
+    }
     all.push(...group.words.map(normalize));
   });
   if (new Set(all).size !== 16) throw new Error("Puzzle words must be unique.");
@@ -106,13 +115,55 @@ function buildGroupCard(group, idx) {
   const small = document.createElement("small");
   small.textContent = group.words.join(", ");
   card.appendChild(small);
+
+  if (group.details) {
+    card.classList.add("has-details");
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    const hint = document.createElement("span");
+    hint.className = "details-hint";
+    hint.textContent = "Tap to learn more";
+    card.appendChild(hint);
+
+    const open = () => showDetailsPopup(group.details);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+  }
+
   return card;
+}
+
+function showDetailsPopup(text, onClose) {
+  detailsCloseCallback = onClose || null;
+  el.detailsText.textContent = text;
+  el.modal.classList.remove("hidden");
+  el.detailsClose.focus();
+}
+
+function closeDetailsPopup() {
+  el.modal.classList.add("hidden");
+  const callback = detailsCloseCallback;
+  detailsCloseCallback = null;
+  if (callback) callback();
+}
+
+function solvedGroupsInOrder() {
+  // solvedGroupNames is a Set, which iterates in insertion order, so this
+  // reflects the order the player actually solved each group in.
+  return [...solvedGroupNames].map(name => {
+    const idx = puzzle.groups.findIndex(group => group.name === name);
+    return { group: puzzle.groups[idx], idx };
+  });
 }
 
 function renderSolvedGroups() {
   el.solved.innerHTML = "";
-  puzzle.groups.forEach((group, idx) => {
-    if (!solvedGroupNames.has(group.name)) return;
+  solvedGroupsInOrder().forEach(({ group, idx }) => {
     el.solved.appendChild(buildGroupCard(group, idx));
   });
 }
@@ -168,7 +219,12 @@ function submitSelection() {
     selected.clear();
     el.message.textContent = "";
     render();
-    if (solvedGroupNames.size === 4) {
+    const justWon = solvedGroupNames.size === 4;
+    if (match.details) {
+      // Show the group's background text right away; if this was the
+      // last group, wait for the player to dismiss it before moving on.
+      showDetailsPopup(match.details, justWon ? () => endGame(true) : null);
+    } else if (justWon) {
       // Give the player a moment to see the last category revealed
       // on the board before moving on to the end screen.
       setTimeout(() => endGame(true), REVEAL_DELAY_MS);
@@ -196,6 +252,9 @@ function isOneAway(selectedWords) {
 
 function endGame(won) {
   if (!won) {
+    // Player didn't finish: append the groups they never solved, in their
+    // original order, after the ones they did — solvedGroupNames already
+    // holds those in the order they were solved.
     puzzle.groups.forEach(group => solvedGroupNames.add(group.name));
   }
   el.game.classList.add("hidden");
@@ -205,7 +264,7 @@ function endGame(won) {
     ? (puzzle.winMessage || "Nicely done. Thanks for playing!")
     : "Here are the answers. Refresh or play again to try from the start.";
   el.endGroups.innerHTML = "";
-  puzzle.groups.forEach((group, idx) => {
+  solvedGroupsInOrder().forEach(({ group, idx }) => {
     el.endGroups.appendChild(buildGroupCard(group, idx));
   });
 }
@@ -218,6 +277,18 @@ el.shuffle.addEventListener("click", () => {
 el.clear.addEventListener("click", clearSelection);
 el.submit.addEventListener("click", submitSelection);
 el.playAgain.addEventListener("click", resetGame);
+
+el.detailsClose.addEventListener("click", closeDetailsPopup);
+el.modal.addEventListener("click", event => {
+  if (event.target === el.modal || event.target.classList.contains("modal-backdrop")) {
+    closeDetailsPopup();
+  }
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !el.modal.classList.contains("hidden")) {
+    closeDetailsPopup();
+  }
+});
 
 if (!puzzleId) {
   showPuzzleList();

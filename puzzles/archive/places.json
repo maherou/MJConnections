@@ -1,0 +1,27 @@
+{
+  "title": "Places and Pastimes",
+  "subtitle": "Another sample puzzle for testing QR-code links.",
+  "maxMistakes": 4,
+  "groups": [
+    {
+      "name": "Board Games",
+      "words": ["Catan", "Risk", "Clue", "Monopoly"],
+      "details": "Monopoly traces back to 1903's \"The Landlord's Game,\" Clue was invented during WWII blackouts in England, Risk began life in France as \"La Conquête du Monde,\" and Catan (1995) helped spark the modern boom in tabletop games."
+    },
+    {
+      "name": "Minnesota Cities",
+      "words": ["Duluth", "Rochester", "Mankato", "Bemidji"],
+      "details": "Duluth sits on the shore of Lake Superior, Rochester is home to the Mayo Clinic, Mankato is named from a Dakota word for \"blue earth,\" and Bemidji claims the giant statues of Paul Bunyan and Babe the Blue Ox."
+    },
+    {
+      "name": "Wedding Things",
+      "words": ["Bouquet", "Vows", "Toast", "Dance"],
+      "details": "The tradition of tossing the bouquet started in medieval England, where guests once tried to tear pieces off a bride's dress for luck — the bouquet toss let her get away with a keepsake still intact."
+    },
+    {
+      "name": "Things With Keys",
+      "words": ["Piano", "Laptop", "Hotel", "Map"],
+      "details": "A standard piano has 88 keys, a QWERTY laptop keyboard usually has around 80, hotels have room keys, and a map's \"key\" is really its legend — the little box that explains all the symbols."
+    }
+  ]
+}

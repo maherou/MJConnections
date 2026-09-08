@@ -1,0 +1,26 @@
+{
+  "title": "JM Trivia",
+  "subtitle": "Various Tidbits About J & M",
+  "maxMistakes": 4,
+  "winMessage": "Certified JM expert!",
+  "groups": [
+    {
+      "name": "People Whose Initials Are MH in M's Immediate Family",
+      "words": ["Michael", "Maria", "Madeline", "Margaret"]
+    },
+    {
+      "name": "JM Favorite Foods",
+      "words": ["Ramen", "Mexican", "Popcorn", "Tea"]
+    },
+    {
+      "name": "JM 10's",
+      "words": ["Years Dating", "Wedding Day", "Wedding Month", "Hillside Street"],
+      "details": "10 years of dating, wedding on 10/10/2026, M lived at 1010 Hillside St, Hastings."
+    },
+    {
+      "name": "JM Favorite Colors",
+      "words": ["Red", "Black", "Blue", "Green"],
+      "details": "J: red and black; M: blue and green."
+    }
+  ]
+}
