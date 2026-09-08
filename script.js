@@ -242,7 +242,8 @@ function submitSelection() {
     el.message.textContent = mistakesRemaining > 0
       ? (oneAway ? "One away…" : "Not quite. Try another group.")
       : "No mistakes left.";
-    selected.clear();
+    // Leave the guess selected so the player can see which four words they
+    // just tried while figuring out the next guess.
     render();
     if (mistakesRemaining <= 0) endGame(false);
   }
