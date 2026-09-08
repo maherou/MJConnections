@@ -6,22 +6,22 @@
   "winMessage": "Certified MJ expert!",
   "groups": [
     {
-      "name": "People Whose Initials Are MH in M's Immediate Family",
-      "words": ["Michael", "Maria", "Madeline", "Margaret"]
+      "name": "MJ Favorite Colors",
+      "words": ["Red", "Black", "Blue", "Green"],
+      "details": "J: red and black; M: blue and green."
     },
     {
       "name": "MJ Favorite Foods",
       "words": ["Ramen", "Mexican", "Popcorn", "Tea"]
     },
     {
+      "name": "People Whose Initials Are MH in M's Immediate Family",
+      "words": ["Michael", "Maria", "Madeline", "Margaret"]
+    },
+    {
       "name": "MJ 10's",
       "words": ["Years Dating", "Wedding Day", "Wedding Month", "Hillside Street"],
       "details": "10 years of dating, wedding on 10/10/2026, M lived at 1010 Hillside St, Hastings."
-    },
-    {
-      "name": "MJ Favorite Colors",
-      "words": ["Red", "Black", "Blue", "Green"],
-      "details": "J: red and black; M: blue and green."
     }
   ]
 }
