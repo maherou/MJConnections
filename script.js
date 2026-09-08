@@ -1,7 +1,7 @@
 const PUZZLES = [
-  { id: "jm-places", title: "Places" },
-  { id: "jm-family-names", title: "Family Names" },
-  { id: "jm-trivia", title: "JM Trivia" }
+  { id: "mj-places", title: "Places" },
+  { id: "mj-family-names", title: "Family Names" },
+  { id: "mj-trivia", title: "MJ Trivia" }
 ];
 
 const MAX_MISTAKES = 4;

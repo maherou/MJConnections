@@ -1,11 +1,11 @@
 {
   "title": "Places",
-  "subtitle": "Significant JM Places",
+  "subtitle": "Significant MJ Places",
   "maxMistakes": 4,
   "winMessage": "You know your way around J & M's world!",
   "groups": [
     {
-      "name": "JM Schools",
+      "name": "MJ Schools",
       "words": ["John", "Benedict", "Thomas", "Minnesota"],
       "details": "J attended St. John's and St. Thomas; M attended St. Ben's and the U of MN."
     },
@@ -20,7 +20,7 @@
       "details": "M was born in Hastings, MN, grew up in Collegeville Township, taught in Tokyo, Japan, and lives in Uptown Minneapolis."
     },
     {
-      "name": "Memorable JM Trip Destinations",
+      "name": "Memorable MJ Trip Destinations",
       "words": ["Portland", "Thunder Bay", "Monterey", "Boston"],
       "details": "Visited Portland, ME; Thunder Bay, Ontario; Monterey, CA; and Boston, MA."
     }

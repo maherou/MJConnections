@@ -30,7 +30,6 @@ body {
 }
 
 .hero { text-align: center; margin-bottom: 22px; }
-.eyebrow { text-transform: uppercase; letter-spacing: .16em; color: var(--accent); font-weight: 700; font-size: .82rem; }
 h1 { margin: 6px 0 8px; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
 .subtitle { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 1.05rem; }
 
