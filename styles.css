@@ -157,7 +157,7 @@ button, .button-link {
   display: inline-block;
 }
 button[disabled] { opacity: .45; cursor: not-allowed; }
-button.secondary { background: #776f68; }
+button.secondary, .button-link.secondary { background: #776f68; }
 
 @media (max-width: 560px) {
   .app { width: min(96vw, 520px); padding-top: 18px; }
