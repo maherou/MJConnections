@@ -59,7 +59,7 @@ function normalize(word) {
 
 function showPuzzleList() {
   el.title.textContent = "Wedding Connections";
-  el.subtitle.textContent = "Choose a puzzle, or make a QR code for each link below.";
+  el.subtitle.textContent = "Madeline (M) and Jared (J) love the game Connections and want to share their own version of the game. Enjoy!";
   el.list.classList.remove("hidden");
   el.pageBg.style.backgroundImage = `url("${PICKER_BACKGROUND_IMAGE}")`;
   el.links.innerHTML = "";
