@@ -11,6 +11,7 @@
   --good-4: #b49ad6;
   --danger: #9c2f2f;
   --shadow: 0 12px 36px rgba(0,0,0,.08);
+  --bg-image-opacity: .16;
 }
 
 * { box-sizing: border-box; }
@@ -23,6 +24,16 @@ body {
   color: var(--ink);
 }
 
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: var(--bg-image-opacity);
+  pointer-events: none;
+}
+
 .app {
   width: min(940px, 94vw);
   margin: 0 auto;
@@ -30,7 +41,6 @@ body {
 }
 
 .hero { text-align: center; margin-bottom: 22px; }
-.eyebrow { text-transform: uppercase; letter-spacing: .16em; color: var(--accent); font-weight: 700; font-size: .82rem; }
 h1 { margin: 6px 0 8px; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
 .subtitle { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 1.05rem; }
 
@@ -67,10 +77,35 @@ h1 { margin: 6px 0 8px; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
   font-weight: 700;
 }
 .solved-card small { display: block; margin-top: 4px; font-weight: 600; color: rgba(0,0,0,.62); }
+.solved-card.has-details { cursor: pointer; }
+.solved-card.has-details:hover,
+.solved-card.has-details:focus-visible { outline: 3px solid rgba(0,0,0,.18); }
+.details-hint { display: block; margin-top: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .02em; color: rgba(0,0,0,.5); text-transform: uppercase; }
 .level-0 { background: var(--good-1); }
 .level-1 { background: var(--good-2); }
 .level-2 { background: var(--good-3); }
 .level-3 { background: var(--good-4); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.55); }
+.modal-content {
+  position: relative;
+  width: min(480px, 100%);
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 26px;
+  text-align: center;
+}
+#details-text { margin: 0 0 20px; color: var(--ink); line-height: 1.55; font-size: 1.02rem; white-space: pre-line; }
 
 .grid {
   display: grid;
@@ -122,7 +157,7 @@ button, .button-link {
   display: inline-block;
 }
 button[disabled] { opacity: .45; cursor: not-allowed; }
-button.secondary { background: #776f68; }
+button.secondary, .button-link.secondary { background: #776f68; }
 
 @media (max-width: 560px) {
   .app { width: min(96vw, 520px); padding-top: 18px; }

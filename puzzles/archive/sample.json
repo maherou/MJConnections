@@ -1,0 +1,28 @@
+{
+  "title": "Sample Reception Puzzle",
+  "subtitle": "A starter puzzle with made-up categories.",
+  "maxMistakes": 4,
+  "winMessage": "You found all four groups. Now try one about the couple!",
+  "groups": [
+    {
+      "name": "Programming Languages",
+      "words": ["Python", "Rust", "Fortran", "Swift"],
+      "details": "Python (1991), Fortran (1957), Rust (2010), and Swift (2014) span nearly seven decades of programming history — Fortran is still used in scientific computing today, and Rust and Swift were both built to make memory-unsafe crashes a thing of the past."
+    },
+    {
+      "name": "National Parks",
+      "words": ["Yellowstone", "Yosemite", "Acadia", "Zion"],
+      "details": "Yellowstone became the world's first national park in 1872. Yosemite and Zion followed as icons of the American West, while Acadia, established in 1916, was the first national park east of the Mississippi."
+    },
+    {
+      "name": "Coffee Drinks",
+      "words": ["Latte", "Mocha", "Espresso", "Cappuccino"],
+      "details": "All four trace back to Italian espresso culture. \"Cappuccino\" is named for the brown-hooded robes of Capuchin friars, while \"mocha\" nods to the Yemeni port city once famous for exporting coffee."
+    },
+    {
+      "name": "Gemstones",
+      "words": ["Ruby", "Jade", "Opal", "Topaz"],
+      "details": "Ruby and topaz are traditional birthstones for July and November. Jade has been prized in Chinese culture for over 5,000 years, and opal gets its shifting colors from microscopic silica spheres bending light."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Places",
+  "subtitle": "Significant MJ Places",
+  "backgroundImage": "images/MJ-in-the-city.jpeg",
+  "maxMistakes": 4,
+  "winMessage": "You know your way around J & M's world!",
+  "groups": [
+    {
+      "name": "MJ Schools",
+      "words": ["John", "Benedict", "Thomas", "Minnesota"],
+      "details": "J attended St. John's and St. Thomas; M attended St. Ben's and the U of MN."
+    },
+    {
+      "name": "Places Where J Lived",
+      "words": ["LA", "Detroit", "Virginia", "Whittier"],
+      "details": "J grew up in LA, worked for the Jesuit Volunteer Corps in Detroit, was a law clerk in Virginia, MN, and lived in the Whittier neighborhood of Minneapolis."
+    },
+    {
+      "name": "Places Where M Lived",
+      "words": ["Hastings", "Collegeville", "Tokyo", "Uptown"],
+      "details": "M was born in Hastings, MN, grew up in Collegeville Township, taught in Tokyo, Japan, and lives in Uptown Minneapolis."
+    },
+    {
+      "name": "Memorable MJ Trip Destinations",
+      "words": ["Portland", "Thunder Bay", "Monterey", "Boston"],
+      "details": "Visited Portland, ME; Thunder Bay, Ontario; Monterey, CA; and Boston, MA."
+    }
+  ]
+}

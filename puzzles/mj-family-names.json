@@ -1,0 +1,27 @@
+{
+  "title": "Names",
+  "subtitle": "Lots of them",
+  "backgroundImage": "images/MJ-in-the-pines.jpeg",
+  "maxMistakes": 4,
+  "winMessage": "You've met the family now!",
+  "groups": [
+    {
+      "name": "M's Sisters",
+      "words": ["Beth", "Amy", "Maria", "Margaret"]
+    },
+    {
+      "name": "M's Brothers",
+      "words": ["Nathan", "Andrew", "Peter", "Anthony"]
+    },
+    {
+      "name": "J's Family Members",
+      "words": ["James", "Cheryl", "JR", "Justin"],
+      "details": "James is the father, Cheryl the mother, JR and Justin are brothers."
+    },
+    {
+      "name": "M's Nicknames",
+      "words": ["Mads", "Rosy", "Ro Ro", "Maewyn"],
+      "details": "Madeline goes by many nicknames!"
+    }
+  ]
+}
