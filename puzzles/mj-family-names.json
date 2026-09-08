@@ -1,6 +1,7 @@
 {
   "title": "Names",
   "subtitle": "Lots of them",
+  "backgroundImage": "images/MJ-in-the-pines.jpeg",
   "maxMistakes": 4,
   "winMessage": "You've met the family now!",
   "groups": [

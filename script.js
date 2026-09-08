@@ -34,12 +34,14 @@ const el = {
   playAgain: document.getElementById("play-again-btn"),
   modal: document.getElementById("details-modal"),
   detailsText: document.getElementById("details-text"),
-  detailsClose: document.getElementById("details-close-btn")
+  detailsClose: document.getElementById("details-close-btn"),
+  pageBg: document.getElementById("page-bg")
 };
 
 let detailsCloseCallback = null;
 
 const REVEAL_DELAY_MS = 900;
+const PICKER_BACKGROUND_IMAGE = "images/main-page-background.jpg";
 
 function shuffleArray(array) {
   const copy = [...array];
@@ -58,6 +60,7 @@ function showPuzzleList() {
   el.title.textContent = "Wedding Connections";
   el.subtitle.textContent = "Choose a puzzle, or make a QR code for each link below.";
   el.list.classList.remove("hidden");
+  el.pageBg.style.backgroundImage = `url("${PICKER_BACKGROUND_IMAGE}")`;
   el.links.innerHTML = "";
   PUZZLES.forEach(p => {
     const a = document.createElement("a");
@@ -88,6 +91,9 @@ function validatePuzzle(data) {
     all.push(...group.words.map(normalize));
   });
   if (new Set(all).size !== 16) throw new Error("Puzzle words must be unique.");
+  if (data.backgroundImage !== undefined && typeof data.backgroundImage !== "string") {
+    throw new Error("A puzzle's backgroundImage, if present, must be a text string.");
+  }
 }
 
 function resetGame() {
@@ -97,6 +103,7 @@ function resetGame() {
   words = shuffleArray(puzzle.groups.flatMap(group => group.words));
   el.title.textContent = puzzle.title || "Wedding Connections";
   el.subtitle.textContent = puzzle.subtitle || "Find four groups of four related words.";
+  el.pageBg.style.backgroundImage = puzzle.backgroundImage ? `url("${puzzle.backgroundImage}")` : "none";
   el.game.classList.remove("hidden");
   el.end.classList.add("hidden");
   render();

@@ -14,7 +14,7 @@ There's no build/test/lint tooling. Serve the folder with any static file server
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/index.html?puzzle=sample`.
+Then visit `http://localhost:8000/index.html?puzzle=mj-places` (or any other id in `puzzles/`).
 
 ## Architecture
 
@@ -29,16 +29,20 @@ Then visit `http://localhost:8000/index.html?puzzle=sample`.
   {
     "title": "...",
     "subtitle": "...",
+    "backgroundImage": "images/....jpg",
     "maxMistakes": 4,
     "winMessage": "...",
-    "groups": [ { "name": "...", "words": ["...", "...", "...", "..."] }, ... ]
+    "groups": [ { "name": "...", "words": ["...", "...", "...", "..."], "details": "..." }, ... ]
   }
   ```
-  Exactly 4 groups, each with exactly 4 unique words (case-insensitive uniqueness across the whole puzzle) — enforced client-side by `validatePuzzle`.
+  Exactly 4 groups, each with exactly 4 unique words (case-insensitive uniqueness across the whole puzzle) — enforced client-side by `validatePuzzle`. `backgroundImage` (puzzle-level) and `details` (per-group) are both optional strings.
+  - `backgroundImage` is shown as a fixed, low-opacity full-page background (`#page-bg`, styled via `--bg-image-opacity` in `styles.css`) while that puzzle is loaded. The picker screen gets its own background too, from the `PICKER_BACKGROUND_IMAGE` constant in `script.js` (not per-puzzle data). See `images/README.md` for the file convention.
+  - `details`, when present on a group, pops up in a dismissible modal right when that group is solved (`showDetailsPopup`), and can be reopened afterward by clicking the solved group's card, both during play and on the end screen.
+- **`images/*`** — one background image per puzzle (via `backgroundImage`), plus one for the picker screen (`PICKER_BACKGROUND_IMAGE`). See `images/README.md`.
 - **`styles.css`** — plain CSS with custom properties for theming (`--good-1..4` are the four solved-group reveal colors, matching NYT Connections' difficulty-tier coloring convention).
 
 ## Adding a new puzzle
 
-1. Copy `puzzles/sample.json` to `puzzles/<id>.json` and edit `title`/`subtitle`/`groups`.
+1. Copy an existing file in `puzzles/` to `puzzles/<id>.json` and edit `title`/`subtitle`/`groups` (and optionally `backgroundImage`/`details`).
 2. Register it in the `PUZZLES` array at the top of `script.js` (`{ id: "<id>", title: "..." }`) so it shows up on the picker screen.
 3. The full URL (`index.html?puzzle=<id>`) is what gets turned into a QR code for guests — see `README.md` for the deployment/QR workflow.

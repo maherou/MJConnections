@@ -1,6 +1,7 @@
 {
   "title": "MJ Trivia",
   "subtitle": "Various Tidbits About M & J",
+  "backgroundImage": "images/MJ-on-the-dock.jpg",
   "maxMistakes": 4,
   "winMessage": "Certified MJ expert!",
   "groups": [
