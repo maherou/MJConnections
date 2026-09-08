@@ -1,0 +1,25 @@
+{
+  "title": "Friend Impressions",
+  "subtitle": "What Friends Think of When They Think of M and J",
+  "backgroundImage": "images/M-and-friends.jpeg",
+  "maxMistakes": 4,
+  "winMessage": "M and J are lucky to have friends who know them so well!",
+  "groups": [
+    {
+      "name": "Words That Remind Me of M",
+      "words": ["Patient", "Caring", "Elegant", "Quick-Witted"]
+    },
+    {
+      "name": "Words That Remind Me of J",
+      "words": ["Goofy", "Fun", "Extrovert", "Kind"]
+    },
+    {
+      "name": "Words That Remind Me of M and J Together",
+      "words": ["Perfect Fit", "Adventurous", "Faithful", "Generous"]
+    },
+    {
+      "name": "M and J Connections",
+      "words": ["Long-Distance Relationship", "Japanese Food", "Dancing", "New Experiences"]
+    }
+  ]
+}
