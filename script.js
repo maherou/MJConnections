@@ -36,7 +36,10 @@ const el = {
   modal: document.getElementById("details-modal"),
   detailsText: document.getElementById("details-text"),
   detailsClose: document.getElementById("details-close-btn"),
-  pageBg: document.getElementById("page-bg")
+  pageBg: document.getElementById("page-bg"),
+  helpBtn: document.getElementById("help-btn"),
+  helpModal: document.getElementById("help-modal"),
+  helpClose: document.getElementById("help-close-btn")
 };
 
 let detailsCloseCallback = null;
@@ -163,6 +166,15 @@ function closeDetailsPopup() {
   const callback = detailsCloseCallback;
   detailsCloseCallback = null;
   if (callback) callback();
+}
+
+function openHelpModal() {
+  el.helpModal.classList.remove("hidden");
+  el.helpClose.focus();
+}
+
+function closeHelpModal() {
+  el.helpModal.classList.add("hidden");
 }
 
 function solvedGroupsInOrder() {
@@ -298,10 +310,19 @@ el.modal.addEventListener("click", event => {
     closeDetailsPopup();
   }
 });
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && !el.modal.classList.contains("hidden")) {
-    closeDetailsPopup();
+
+el.helpBtn.addEventListener("click", openHelpModal);
+el.helpClose.addEventListener("click", closeHelpModal);
+el.helpModal.addEventListener("click", event => {
+  if (event.target === el.helpModal || event.target.classList.contains("modal-backdrop")) {
+    closeHelpModal();
   }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
+  if (!el.modal.classList.contains("hidden")) closeDetailsPopup();
+  if (!el.helpModal.classList.contains("hidden")) closeHelpModal();
 });
 
 if (!puzzleId) {
