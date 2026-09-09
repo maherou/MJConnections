@@ -23,7 +23,10 @@
     </section>
 
     <section id="puzzle-list" class="card hidden">
-      <h2>Choose a puzzle</h2>
+      <div class="puzzle-list-header">
+        <h2>Choose a puzzle</h2>
+        <button id="help-btn" type="button" class="help-btn">❓ How to Play</button>
+      </div>
       <div id="puzzle-links" class="puzzle-links"></div>
     </section>
 
@@ -38,6 +41,7 @@
 
       <div class="controls">
         <a class="button-link secondary" href="index.html">Back</a>
+        <button id="game-help-btn" type="button" class="help-btn">❓ Help</button>
         <button id="shuffle-btn" type="button">Shuffle</button>
         <button id="clear-btn" type="button">Clear</button>
         <button id="submit-btn" type="button" disabled>Submit</button>
@@ -57,6 +61,23 @@
       <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="details-text">
         <p id="details-text"></p>
         <button id="details-close-btn" type="button">Got it</button>
+      </div>
+    </div>
+
+    <div id="help-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <h3 id="help-title">How to Play</h3>
+        <ul class="help-list">
+          <li>Each puzzle has 16 words that form <strong>four hidden groups</strong> of four.</li>
+          <li>Tap four words you think belong together, then tap <strong>Submit</strong>.</li>
+          <li>Guess right, and that group is revealed and set aside. Guess wrong, and it costs one of your four mistakes.</li>
+          <li>If you're close, we'll tell you "One away…" as a hint.</li>
+          <li>Groups get harder from yellow (easiest) to purple (trickiest).</li>
+          <li>Tap a solved group to read its backstory, if it has one.</li>
+          <li>Use <strong>Shuffle</strong> to mix up the board, or <strong>Clear</strong> to deselect everything.</li>
+        </ul>
+        <button id="help-close-btn" type="button">Got it</button>
       </div>
     </div>
   </main>
