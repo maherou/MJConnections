@@ -38,6 +38,7 @@ const el = {
   detailsClose: document.getElementById("details-close-btn"),
   pageBg: document.getElementById("page-bg"),
   helpBtn: document.getElementById("help-btn"),
+  gameHelpBtn: document.getElementById("game-help-btn"),
   helpModal: document.getElementById("help-modal"),
   helpClose: document.getElementById("help-close-btn")
 };
@@ -312,6 +313,7 @@ el.modal.addEventListener("click", event => {
 });
 
 el.helpBtn.addEventListener("click", openHelpModal);
+el.gameHelpBtn.addEventListener("click", openHelpModal);
 el.helpClose.addEventListener("click", closeHelpModal);
 el.helpModal.addEventListener("click", event => {
   if (event.target === el.helpModal || event.target.classList.contains("modal-backdrop")) {
